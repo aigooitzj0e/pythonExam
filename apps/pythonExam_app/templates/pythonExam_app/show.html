@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Details</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'pythonExam_app/css/main.css' %}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <h2>{{ trips.dest}}</h2>
+            <ul>
+                <li>Planned by: {{trips.users.name}}</li>
+                <li>Description: {{trips.desc}}</li>
+                <li>Start date: {{trips.startdate}}</li>
+                <li>End Date: {{trips.enddate}}</li>
+            </ul>
+
+            <h1>Others' Joining the Trip</h1>
+            <ul>
+                {% for user in others %}
+                    <li>{{user.name}}</li>
+                {% endfor %}
+            </ul>
+            <a href="/dashboard">Back</a>
+        </div>
+
+    </body>
+</html>

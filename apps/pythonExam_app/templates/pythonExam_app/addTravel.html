@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add Travel Plans</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'pythonExam_app/css/main.css' %}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <h2>Add a Trip</h2>
+            <form action="/addTravel_process" method='POST'>
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Destination</td>
+                        <td><input type="text" name ="dest"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" name ="desc"></td>
+                    </tr>
+                    <tr>
+                        <td>Travel Date From:</td>
+                        <td><input type="date" name ="startdate"></td>
+                    </tr>
+                    <tr>
+                        <td>Travel End Date:</td>
+                        <td><input type="date" name ="enddate"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" name="submit" value="Add!">
+        </form>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <a href="/dashboard">Back</a>
+        </div>
+
+    </body>
+</html>

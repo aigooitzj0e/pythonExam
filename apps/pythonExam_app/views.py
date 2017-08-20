@@ -16,7 +16,7 @@ def dashboard(request):
         "welcome": User.objects.get(id = request.session['user_id']),
         "mytrips": Plan.objects.filter(users__id = request.session['user_id']),
         "all_trips": Plan.objects.all(),
-        'trips': Plan.objects.filter(many_users__id=request.session['user_id']) | Plan.objects.filter(users__id = request.session['user_id']),
+        'trips': Plan.objects.filter(many_users__id=request.session['user_id']),
         }
 
     return render(request, "pythonExam_app/dashboard.html", context)
